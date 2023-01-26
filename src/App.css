@@ -1,38 +1,193 @@
 .App {
+  font-family: sans-serif;
+}
+
+.weatherApp {
+  padding: 25px;
+  padding-bottom: 3px;
+  border: 1px solid rgb(193, 193, 193);
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px rgb(170, 170, 170);
+  margin-bottom: 10px;
+}
+
+.container {
+  padding-top: 30px;
+  max-width: 650px;
+  min-width: 600px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 35px;
+  margin-top: 7px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+}
+
+p {
+  line-height: 20px;
+}
+
+.header {
+  padding-top: 4px;
+  padding-bottom: 20px;
+  color: rgb(92, 92, 92);
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.current {
+  padding-left: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.currentTemp {
+  font-size: 55px;
+  font-weight: 400;
+  line-height: 70px;
+  margin-left: 4px;
+  margin-bottom: 0;
+}
+
+.d-flex {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.maxMin {
+  font-size: 14px;
+  color: rgb(92, 92, 92);
+  padding-top: 0;
+  margin-top: 0;
   text-align: center;
+  position: relative;
+  top: -30px;
+  left: -5px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.maxTemp {
+  font-weight: 400;
+  padding-right: 2px;
+  color: rgb(88, 88, 88);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.minTemp {
+  font-weight: 300;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.icon {
+  margin-left: 0;
+  padding-left: 0;
+  position: relative;
+  top: -13px;
 }
 
-.App-link {
-  color: #61dafb;
+.units {
+  position: relative;
+  top: -28px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.active {
+  text-decoration: none;
+  font-weight: 500;
+  color: #000;
+  cursor: default;
+}
+
+.active:hover {
+  color: #000;
+}
+
+.inactive {
+  color: #ff7f50;
+}
+
+.inactive:hover {
+  color: #d14512;
+  transition: 0.17s ease-in-out;
+}
+
+.additional-weather {
+  padding: 4px;
+  line-height: 25px;
+}
+
+.day-forecast {
+  line-height: 10px;
+  font-size: 17px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  position: relative;
+  top: 5px;
+}
+
+.icon-forecast {
+  width: 75px;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.temperature-forecast {
+  padding-top: 0;
+  margin-top: 0;
+  font-size: 13px;
+  position: relative;
+  top: -10px;
+}
+
+small a {
+  color: #ff7f50;
+}
+
+small a:hover {
+  color: #d14512;
+  transition: 0.2s ease-in-out;
+}
+
+.dark {
+  background-color: rgb(46, 46, 46);
+  color: rgb(233, 233, 233);
+}
+.dark .weatherApp {
+  background-color: rgb(43, 43, 43);
+  border: 1px solid rgb(33, 33, 33);
+  box-shadow: 1px 1px 8px rgb(27, 27, 27);
+}
+
+.dark .currentLocation {
+  background-color: rgb(74, 74, 74);
+  border: rgb(39, 39, 39);
+}
+.dark .currentLocation:hover {
+  background-color: rgb(94, 94, 94);
+  border: rgb(39, 39, 39);
+  transition: 0.3s ease-in-out;
+}
+.dark .temperatureForecast {
+  color: rgb(214, 214, 214);
+}
+.dark .maxMin {
+  color: rgb(214, 214, 214);
+}
+.dark .maxTemp {
+  color: rgb(200, 200, 200);
+}
+.dark .header {
+  color: rgb(214, 214, 214);
+}
+.dark .active {
+  color: rgb(214, 214, 214);
+}
+.dark .active:hover {
+  color: rgb(214, 214, 214);
 }

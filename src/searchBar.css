@@ -1,0 +1,24 @@
+.submitButton {
+  background-color: #ff7f50;
+}
+
+.submitButton:hover {
+  background-color: #fc723f;
+  color: #fff;
+  transition: 0.3s ease-in-out;
+}
+
+.dark .input-group {
+  border: rgb(152, 152, 152);
+}
+.dark .form-control {
+  background-color: rgb(237, 237, 237);
+}
+.dark .submitButton {
+  color: #fff;
+  border: rgb(39, 39, 39);
+}
+.dark .submitButton:hover {
+  color: #000;
+  border: rgb(39, 39, 39);
+}
