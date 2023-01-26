@@ -20,7 +20,7 @@ function App() {
         </div>
         <small>
           <a
-            href="https://github.com/brim-bold/React-Weather-App.git"
+            href="https://github.com/brim-bold/React-Weather.git"
             target="_blank"
           >
             open-source code
