@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Time from "./Time";
 
-export default function Weather(city, searchType) {
+export default function Weather(props) {
   let [city, setCity] = useState(props.city);
   let [units, setUnits] = useState("imperial");
   let windUnits;
@@ -16,6 +16,10 @@ export default function Weather(city, searchType) {
   let icon;
   let url;
   let apiKey = "1d046e6aaa399d63de49ffe2fb5a384e";
+
+  let celsius = document.querySelector("#celsius");
+
+  let fahrenheit = document.querySelector("#fahrenheit");
 
   function metricConversion(event) {
     event.preventDefault();

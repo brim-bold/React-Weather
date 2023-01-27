@@ -3,11 +3,11 @@ import Weather from "./Weather";
 import "./searchBar.css";
 
 export default function Search() {
+  let searchType = "search";
   let [city, setCity] = useState("Miami");
   let [statement, setStatement] = useState(
     <Weather city={city} searchType={searchType} />
   );
-  let searchType = "search";
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -33,7 +33,7 @@ export default function Search() {
             <div className="input-group mb-3">
               <input
                 type="search"
-                onChange={handleCity}
+                onChange={updateCity}
                 placeholder="City"
                 className="form-control"
                 id="cityInput"
