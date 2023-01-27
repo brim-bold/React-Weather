@@ -22,6 +22,7 @@ function App() {
           <a
             href="https://github.com/brim-bold/React-Weather.git"
             target="_blank"
+            rel="noreferrer"
           >
             open-source code
           </a>{" "}
