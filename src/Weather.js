@@ -3,7 +3,6 @@ import axios from "axios";
 import Time from "./Time";
 
 export default function Weather(props) {
-  let [city, setCity] = useState(props.city);
   let [units, setUnits] = useState("imperial");
   let windUnits;
   let cityName;
@@ -75,7 +74,7 @@ export default function Weather(props) {
   }
 
   if ((props.searchType = "search")) {
-    url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+    url = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=${units}`;
     axios.get(url).then(handleWeather);
   } else {
     function getPosition(position) {
