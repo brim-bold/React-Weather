@@ -1,22 +1,12 @@
 import "./App.css";
-import Search from "./Search";
-import Weather from "./Weather";
-import Current from "./Current";
+import SearchBar from "./SearchBar";
 
 function App() {
   return (
     <div className="App">
       <div className="container">
         <div className="weatherApp">
-          <div className="row">
-            <div className="col-9">
-              <Search />
-            </div>
-            <div className="col-2">
-              <Current />
-            </div>
-          </div>
-          <Weather />
+          <SearchBar />
         </div>
         <small>
           <a
