@@ -73,7 +73,7 @@ export default function Weather(props) {
     }
   }
 
-  if ((props.searchType = "search")) {
+  if (props.searchType === "search") {
     url = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=${units}`;
     axios.get(url).then(handleWeather);
   } else {
