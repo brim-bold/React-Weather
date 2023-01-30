@@ -18,6 +18,7 @@ export default function Search() {
   let [city, setCity] = useState("Miami");
   let [units, setUnits] = useState("imperial");
   let [statement, setStatement] = useState("");
+  let load = 0;
 
   //weather forecast display
   function displayWeather() {
@@ -164,6 +165,20 @@ export default function Search() {
 
   function updateCity(event) {
     setCity(event.target.value);
+  }
+
+  //Default city call
+  function defaultAction() {
+    if (load === 0) {
+      url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+      axios.get(url).then(handleWeather);
+    }
+
+    load = 1;
+  }
+
+  if (load === 0) {
+    defaultAction();
   }
 
   return (
