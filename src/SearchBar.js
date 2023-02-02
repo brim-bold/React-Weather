@@ -15,10 +15,11 @@ export default function Search() {
   let description;
   let icon;
   let url;
+
   let [city, setCity] = useState("Miami");
   let [units, setUnits] = useState("imperial");
   let [statement, setStatement] = useState("");
-  let load = 0;
+  let [search, setSearch] = useState("");
 
   //weather forecast display
   function displayWeather() {
@@ -85,6 +86,7 @@ export default function Search() {
 
   //updates weather variables and handles weather display
   function handleWeather(response) {
+    console.log(response);
     cityName = response.data.name;
     temperature = response.data.main.temp;
     minTemperature = response.data.main.temp_min;
@@ -145,9 +147,14 @@ export default function Search() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    console.log(search);
 
-    url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-    axios.get(url).then(handleWeather);
+    setSearch(true);
+
+    if (search) {
+      url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+      axios.get(url).then(handleWeather);
+    }
   }
 
   function handleCurrent(event) {
@@ -164,21 +171,8 @@ export default function Search() {
   }
 
   function updateCity(event) {
+    event.preventDefault();
     setCity(event.target.value);
-  }
-
-  //Default city call
-  function defaultAction() {
-    if (load === 0) {
-      url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-      axios.get(url).then(handleWeather);
-    }
-
-    load = 1;
-  }
-
-  if (load === 0) {
-    defaultAction();
   }
 
   return (
