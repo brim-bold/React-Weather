@@ -20,10 +20,12 @@ export default function Search() {
   let [statement, setStatement] = useState("");
   let [search, setSearch] = useState("true");
   let [lastUnit, setLastUnit] = useState("imperial");
+  let [defaultLoad, setDefaultLoad] = useState(true);
   let unit = "";
   let forecast;
   let forecastWeather = [];
 
+  //converts timestamp to display the correct day for the corresponding forecast data
   function formatDay(timestamp) {
     let date = new Date(timestamp * 1000);
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -159,6 +161,7 @@ export default function Search() {
     }
   }
 
+  //formats html to display 6 day weather forecast
   function formatForecast() {
     return (
       <div className="row justify-content-center forecast" id="forecast">
@@ -280,7 +283,7 @@ export default function Search() {
     );
   }
 
-  //updates weather variables and handles weather display
+  //updates weather variables for minTemperature & maxTemperature and handles weather display
   function updateForecast(response) {
     minTemperature = response.data.daily[0].temperature.minimum;
     maxTemperature = response.data.daily[0].temperature.maximum;
@@ -302,6 +305,7 @@ export default function Search() {
     setStatement(displayWeather());
   }
 
+  //sets some basic current weather data
   function handleWeather(response) {
     cityName = response.data.city;
     temperature = response.data.temperature.current;
@@ -329,29 +333,48 @@ export default function Search() {
   function metricConversion(event) {
     event.preventDefault();
 
-    setLastUnit("metric");
-    unit = "metric";
-    setSearch(true);
+    if (lastUnit === "imperial") {
+      setLastUnit("metric");
+      unit = "metric";
+      setSearch(true);
 
-    if (search) {
-      url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
-      axios.get(url).then(handleWeather);
+      if (search) {
+        url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
+        axios.get(url).then(handleWeather);
+      }
     }
   }
 
+  //converts weather data to imperial
   function imperialConversion(event) {
     event.preventDefault();
 
-    setLastUnit("imperial");
-    unit = "imperial";
+    if (lastUnit === "metric") {
+      setLastUnit("imperial");
+      unit = "imperial";
+      setSearch(true);
+
+      if (search) {
+        url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
+        axios.get(url).then(handleWeather);
+      }
+    }
+  }
+
+  //default loading city
+  if (defaultLoad) {
     setSearch(true);
+    unit = "imperial";
 
     if (search) {
       url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
       axios.get(url).then(handleWeather);
     }
+
+    setDefaultLoad(false);
   }
 
+  //handles search functionality
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -369,6 +392,7 @@ export default function Search() {
     }
   }
 
+  //handles current location weather functionality
   function handleCurrent(event) {
     event.preventDefault();
 
@@ -388,6 +412,7 @@ export default function Search() {
     navigator.geolocation.getCurrentPosition(getPosition);
   }
 
+  //updates city variable
   function updateCity(event) {
     event.preventDefault();
     setCity(event.target.value);
